@@ -16,6 +16,7 @@ Route::middleware([])->group(function () {
     Route::get('/news/{post}', [WebController::class, 'contentDetailPage'])->name('web.news-details');
     Route::get('/about', [WebController::class, 'aboutPage'])->name('web.about');
     Route::get('/contact', [WebController::class, 'contactPage'])->name('web.contact');
+    Route::resource('contacts', ContactController::class)->only(['store']);
 });
 
 Route::middleware('auth')->prefix('offices')->group(function () {

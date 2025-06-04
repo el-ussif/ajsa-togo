@@ -41,6 +41,8 @@
                                     <div>
                                         <h3 class="contact-card-title">Téléphone</h3>
                                         <p class="contact-card-text">+228 92 71 46 51</p>
+                                        <p class="contact-card-text">+228 92 00 55 09</p>
+                                        <p class="contact-card-text">+228 91 57 43 14</p>
                                     </div>
                                 </div>
                             </div>
@@ -100,41 +102,72 @@
                             <p class="form-description">Remplissez ce formulaire et nous vous répondrons rapidement</p>
                         </div>
                         <div class="card-body">
-                            <form id="contact-form" class="contact-form">
+                            @if (session('success'))
+                                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                                    <strong class="font-bold">Succès !</strong>
+                                    <span class="block sm:inline">{{ session('success') }}</span>
+                                </div>
+                            @else
+                            <form action="{{ route('contacts.store') }}" method="POST" id="contact-form" class="contact-form">
+                                @csrf
                                 <div class="form-row">
+                                    {{-- Nom complet --}}
                                     <div class="form-group">
-                                        <label class="form-label" for="nom">Nom complet *</label>
-                                        <input class="form-input" type="text" id="nom" name="nom" required placeholder="Votre nom">
+                                        <label class="form-label" for="username">Nom complet *</label>
+                                        <input class="form-input" type="text" id="username" name="username"
+                                               value="{{ old('username') }}" required placeholder="Votre nom">
+                                        @error('username')
+                                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                                        @enderror
                                     </div>
+
+                                    {{-- Email --}}
                                     <div class="form-group">
-                                        <label class="form-label" for="email">Email *</label>
-                                        <input class="form-input" type="email" id="email" name="email" required placeholder="votre@email.com">
+                                        <label class="form-label" for="email">Email</label>
+                                        <input class="form-input" type="email" id="email" name="email"
+                                               value="{{ old('email') }}" placeholder="votre@email.com">
+                                        @error('email')
+                                        <p class="text-red-500 text-sm">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
 
+                                {{-- Numéro de téléphone (optionnel) --}}
                                 <div class="form-group">
-                                    <label class="form-label" for="sujet">Sujet *</label>
-                                    <select class="form-select" id="sujet" name="sujet" required>
-                                        <option value="">Choisissez le sujet de votre message</option>
-                                        <option value="information">Demande d'information générale</option>
-                                        <option value="partenariat">Proposition de partenariat</option>
-                                        <option value="benevolat">Candidature bénévolat</option>
-                                        <option value="projet">Proposition de projet</option>
-                                        <option value="stage">Demande de stage</option>
-                                        <option value="presse">Presse et médias</option>
-                                        <option value="autre">Autre</option>
-                                    </select>
+                                    <label class="form-label" for="phoneNumber">Téléphone</label>
+                                    <input class="form-input" type="text" id="phoneNumber" name="phoneNumber"
+                                           value="{{ old('phoneNumber') }}" placeholder="Votre numéro de téléphone">
+                                    @error('phoneNumber')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
+                                {{-- Sujet --}}
+                                <div class="form-group">
+                                    <label class="form-label" for="subject">Sujet *</label>
+                                    <input class="form-input" type="text" id="subject" name="subject"
+                                           value="{{ old('subject') }}" required placeholder="Sujet de votre message">
+                                    @error('subject')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                {{-- Message --}}
                                 <div class="form-group">
                                     <label class="form-label" for="message">Message *</label>
-                                    <textarea class="form-textarea" id="message" name="message" required placeholder="Décrivez votre demande en détail..." rows="6"></textarea>
+                                    <textarea class="form-textarea" id="message" name="message" required
+                                              placeholder="Décrivez votre demande en détail..." rows="6">{{ old('message') }}</textarea>
+                                    @error('message')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
+                                {{-- Bouton de soumission --}}
                                 <button type="submit" class="btn btn-primary form-submit-btn">
                                     <i class="fas fa-paper-plane"></i> Envoyer le message
                                 </button>
                             </form>
+                            @endif
                         </div>
                     </div>
 
@@ -165,32 +198,8 @@
     </section>
 @endsection
 
-@section('scripts')
-    <script>
-        // Gestion du formulaire de contact
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Simulation d'envoi
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-
-            setTimeout(() => {
-                alert('Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.');
-                this.reset();
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-            }, 2000);
-        });
-    </script>
-@endsection
 @section('styles')
-
     <style>
-        /* Styles spécifiques à la page contact */
         .contact-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
