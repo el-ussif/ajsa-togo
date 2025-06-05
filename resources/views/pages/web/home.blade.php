@@ -204,8 +204,8 @@
             <h2>Rejoignez notre mission</h2>
             <p>Ensemble, construisons un avenir meilleur pour la jeunesse africaine</p>
             <div class="cta-buttons">
-                <a href="adhesion.html" class="btn btn-white">Devenir membre</a>
-                <a href="contact.html" class="btn btn-outline-white">Nous contacter</a>
+                <a href="adhesion.html" class="btn btn-white hidden">Devenir membre</a>
+                <a href="{{route('web.contact')}}" class="btn btn-outline-white">Nous contacter</a>
             </div>
         </div>
     </section>
