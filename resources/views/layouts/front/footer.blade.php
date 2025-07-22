@@ -4,13 +4,13 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-section">
-                <div class="footer-logo">
+                <a href="{{ route('web.home') }}" class="footer-logo">
                     <div class="logo-icon">A</div>
                     <div>
                         <div class="footer-title">AJSA-TOGO</div>
                         <div class="footer-subtitle">Association des Jeunes aux Services de l'Afrique</div>
                     </div>
-                </div>
+                </a>
                 <p class="footer-description">La jeunesse africaine, cœur du développement</p>
             </div>
 

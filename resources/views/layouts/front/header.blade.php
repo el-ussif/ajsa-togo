@@ -11,13 +11,13 @@
 
 <nav class="navbar">
     <div class="nav-container">
-        <div class="nav-logo">
+        <a href="{{ route('web.home') }}" class="nav-logo">
             <div class="logo-icon">A</div>
             <div class="logo-text">
                 <div class="logo-title">AJSA-TOGO</div>
                 <div class="logo-subtitle">Jeunesse africaine, cœur du développement</div>
             </div>
-        </div>
+        </a>
 
         <div class="nav-menu" id="nav-menu">
             <a href="{{ route('web.home') }}" class="nav-link active">Accueil</a>
