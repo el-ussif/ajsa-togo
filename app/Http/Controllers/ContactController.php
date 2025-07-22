@@ -25,7 +25,7 @@ class ContactController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * (Si le formulaire est public, tu n’as pas besoin de cette méthode)
+     * (Si le formulaire est public_html, tu n’as pas besoin de cette méthode)
      */
     public function create(): Factory|\Illuminate\Contracts\View\View
     {

@@ -26,7 +26,7 @@ class PostController extends Controller
         $data['author_id'] = Auth::id();
 
         if ($request->hasFile('cover_image')) {
-            $data['cover_image'] = $request->file('cover_image')->store('covers', 'public');
+            $data['cover_image'] = $request->file('cover_image')->store('covers', 'public_html');
         }
 
         $post = Post::create($data);
@@ -47,9 +47,9 @@ class PostController extends Controller
 
         if ($request->hasFile('cover_image')) {
             if ($post->cover_image) {
-                Storage::disk('public')->delete($post->cover_image);
+                Storage::disk('public_html')->delete($post->cover_image);
             }
-            $data['cover_image'] = $request->file('cover_image')->store('covers', 'public');
+            $data['cover_image'] = $request->file('cover_image')->store('covers', 'public_html');
         }
 
         $post->update($data);
@@ -58,7 +58,7 @@ class PostController extends Controller
 
     public function destroy(Post $post) {
         if ($post->cover_image) {
-            Storage::disk('public')->delete($post->cover_image);
+            Storage::disk('public_html')->delete($post->cover_image);
         }
         $post->delete();
         return redirect()->route('posts.index')->with('success', 'Post deleted');
