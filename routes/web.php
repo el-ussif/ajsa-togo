@@ -26,7 +26,7 @@ Route::middleware('auth')->prefix('offices')->group(function () {
 
     Route::resource('categories', CategoryController::class);
     Route::resource('posts', PostController::class);
-    Route::resource('contacts', ContactController::class)->except(['edit', 'update']);
+    Route::resource('contacts', ContactController::class)->except(['edit', 'update', 'store']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
