@@ -55,6 +55,10 @@
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
+                        <span>contact@ajsa-togo.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
                         <span>ajsatogo@gmail.com</span>
                     </div>
                 </div>

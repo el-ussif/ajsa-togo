@@ -56,6 +56,7 @@
                                     </div>
                                     <div>
                                         <h3 class="contact-card-title">Email</h3>
+                                        <p class="contact-card-text">contact@ajsa-togo.com</p>
                                         <p class="contact-card-text">ajsatogo@gmail.com</p>
                                     </div>
                                 </div>
@@ -185,6 +186,10 @@
                                 <div class="quick-contact-item">
                                     <i class="fas fa-phone quick-contact-icon"></i>
                                     <span>WhatsApp : +228 92 71 46 51</span>
+                                </div>
+                                <div class="quick-contact-item">
+                                    <i class="fas fa-envelope quick-contact-icon"></i>
+                                    <span>Email : contact@ajsa-togo.com</span>
                                 </div>
                                 <div class="quick-contact-item">
                                     <i class="fas fa-envelope quick-contact-icon"></i>
